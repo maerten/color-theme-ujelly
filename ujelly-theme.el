@@ -5,12 +5,25 @@
 ;; Version: 1.1.16
 
 ;; Inspired by jellybeans: http://www.vim.org/scripts/script.php?script_id=2555.
-(deftheme ujelly "The ujelly color theme")
+
+
+;;
+;; - forked -
+;; 2016/03/10 - adapted colors a bit to look identical to jellybeans+
+;;              (in haskell-mode)
+;;
+(deftheme ujelly+ "The ujelly+ color theme")
 
 (let ((class '((class color) (min-colors 89)))
-      (ujelly-fg "#ffffff")
-      (ujelly-bg "#000000")
-      (ujelly-blue-0 "#8fbfdc")
+      ;;(ujelly-fg "#ffffff")
+      (ujelly-fg "#e8e8d3")
+      (ujelly-hspragma "#556633")
+      ;;(ujelly-bg "#000000")
+      (ujelly-bg "#151515")
+      (ujelly-blue-0 "#7697d6")
+      ;; (ujelly-blue-0 "#7697d6")
+      ;; (ujelly-blue-0 "#8fbfdc")
+      ;;(ujelly-blue-0 "#8fbfdc")
       (ujelly-green-0 "#99ad6a")
       (ujelly-green-1 "#447799")
       (ujelly-green-2 "#a8ff60")
@@ -20,8 +33,9 @@
       (ujelly-grey-3 "#1c1c1c")
       (ujelly-grey-4 "#363636")
       (ujelly-grey-5 "#444444")
-      (ujelly-orange-0 "#ffb964")
-      (ujelly-purple-0 "#8197bf")
+      (ujelly-grey-6 "#605958")
+      (ujelly-orange-0 "#e8e8d3") ;; this is actually yellow-ish
+      (ujelly-purple-0 "#8fbfdc")
       (ujelly-purple-1 "#474e90")
       (ujelly-purple-2 "#cd00cd")
       (ujelly-purple-3 "#540063")
@@ -30,6 +44,7 @@
       (ujelly-red-1 "#dd0093")
       (ujelly-red-2 "#de5577")
       (ujelly-red-3 "#ff73fd")
+      (ujelly-red-4 "#ff2200")
       (ujelly-yellow-0 "#fad07a")
       (ujelly-yellow-1 "#ffff00"))
 
@@ -77,19 +92,20 @@
        `(eshell-ls-product ((,class (:foreground ,ujelly-fg))))
        `(eshell-ls-symlink ((,class (:weight normal :foreground ,ujelly-purple-2))))
        `(font-lock-builtin-face ((,class (:foreground ,ujelly-blue-0))))
-       `(font-lock-comment-face ((,class (:slant italic :foreground ,ujelly-grey-0))))
+       ;; `(font-lock-comment-face ((,class (:slant italic :foreground ,ujelly-grey-0))))
+       `(font-lock-comment-face ((,class (:slant normal :foreground ,ujelly-grey-0))))
        `(font-lock-constant-face ((,class (:foreground ,ujelly-green-1))))
        `(font-lock-doc-face ((,class (:foreground ,ujelly-green-0))))
        `(font-lock-function-name-face ((,class (:foreground ,ujelly-yellow-0))))
        `(font-lock-keyword-face ((,class (:foreground ,ujelly-purple-0))))
-       `(font-lock-preprocessor-face ((,class (:foreground ,ujelly-fg))))
+       `(font-lock-preprocessor-face ((,class (:foreground ,ujelly-hspragma))))
        `(font-lock-string-face ((,class (:foreground ,ujelly-green-0))))
        `(font-lock-type-face ((,class (:foreground ,ujelly-orange-0))))
-       `(font-lock-variable-name-face ((,class (:foreground ,ujelly-red-0))))
+       `(font-lock-variable-name-face ((,class (:foreground ,ujelly-yellow-0)))) ;; hs operators color
        `(font-lock-warning-face ((,class (:foreground ,ujelly-red-1))))
        `(font-lock-regexp-grouping-construct ((t (:foreground ,ujelly-yellow-0 :bold t))))
        `(font-lock-regexp-grouping-backslash ((t (:foreground ,ujelly-red-0 :bold t))))
-       `(fringe ((,class (:foreground ,ujelly-fg :background ,ujelly-bg))))
+       `(fringe ((,class (:foreground ,ujelly-grey-5 :background ,ujelly-bg))))
        `(git-commit-comment-file ((,class (:foreground ,ujelly-fg))))
        `(git-commit-comment-heading ((,class (:foreground ,ujelly-yellow-0))))
        `(git-commit-summary ((,class (:foreground ,ujelly-fg))))
@@ -109,7 +125,7 @@
        `(helm-source-header ((,class (:foreground ,ujelly-yellow-0 :background ,ujelly-grey-3))))
        `(helm-swoop-target-line-face ((,class (:foreground ,ujelly-fg :background ,ujelly-grey-4))))
        `(helm-swoop-target-word-face ((,class (:foreground ,ujelly-red-1))))
-       `(hl-line ((,class (:background ,ujelly-grey-4))))
+       `(hl-line ((,class (:background ,ujelly-grey-3))))
        `(isearch ((,class (:foreground ,ujelly-fg :background ,ujelly-red-1))))
        `(isearch-fail ((,class (:background ,ujelly-red-1))))
        `(ido-first-match ((,class (:foreground ,ujelly-yellow-0))))
@@ -117,7 +133,7 @@
        `(ido-subdir ((,class (:foreground ,ujelly-fg))))
        `(ido-virtual ((,class (:foreground ,ujelly-purple-0))))
        `(lazy-highlight ((,class (:foreground ,ujelly-red-1 :background nil))))
-       `(linum ((,class (:slant italic :foreground ,ujelly-grey-4))))
+       `(linum ((,class (:slant normal :foreground ,ujelly-grey-6))))
        `(magit-blame-heading ((,class (:foreground ,ujelly-grey-1 :background ,ujelly-grey-2))))
        `(magit-branch-local ((,class (:foreground ,ujelly-green-2))))
        `(magit-branch-remote ((,class (:foreground ,ujelly-green-2))))
@@ -147,7 +163,8 @@
        `(org-level-1 ((,class (:foreground ,ujelly-red-2))))
        `(org-level-2 ((,class (:foreground ,ujelly-red-0))))
        `(org-level-3 ((,class (:foreground ,ujelly-red-0))))
-       `(org-link ((,class (:foreground ,ujelly-blue-0))))
+       ;; `(org-link ((,class (:foreground ,ujelly-blue-0))))
+       `(org-link ((,class (:foreground ,ujelly-fg))))
        `(org-special-keyword ((,class (:foreground ,ujelly-purple-0))))
        `(org-todo ((,class (:foreground ,ujelly-yellow-0))))
        `(region ((,class (:background ,ujelly-purple-1))))
@@ -157,12 +174,12 @@
        `(smerge-refined-change ((,class (:foreground ,ujelly-green-0))))
        `(sp-pair-overlay-face ((,class (:background ,ujelly-grey-4))))
        `(sp-show-pair-match-face ((,class (:background ,ujelly-grey-5))))
-       `(trailing-whitespace ((,class (:background ,ujelly-red-1))))
+       `(trailing-whitespace ((,class (:background ,ujelly-red-4))))
        `(web-mode-builtin-face ((,class (:foreground ,ujelly-blue-0))))
        `(web-mode-html-attr-name-face ((,class (:foreground ,ujelly-purple-0))))
        `(web-mode-html-tag-face ((,class (:foreground ,ujelly-fg))))
        `(web-mode-symbol-face ((,class (:foreground ,ujelly-green-1))))
-       `(whitespace-trailing ((,class (:background ,ujelly-red-1))))))
+       `(whitespace-trailing ((,class (:background ,ujelly-red-4))))))
 
 ;;;###autoload
 (when load-file-name
